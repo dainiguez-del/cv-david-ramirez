@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>David Ramírez Iñiguez — Director de Collections</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+          --bg:#0e1512; --bg2:#141d19;
+          --heading:#e8f5f0; --text:#c5ddd6; --body:#8baaa0; --muted:#5c7a70;
+          --accent:#10b981; --accent2:#34d399;
+          --as:rgba(16,185,129,.08); --ab:rgba(16,185,129,.38); --ag:rgba(16,185,129,.32); --ashadow:rgba(16,185,129,.22);
+          --card:rgba(255,255,255,.03); --cb:rgba(16,185,129,.13); --ch:rgba(16,185,129,.06);
+          --div:rgba(16,185,129,.1); --grid:rgba(16,185,129,.03); --wm:rgba(16,185,129,.035);
+          --track:rgba(255,255,255,.08); --inp:rgba(255,255,255,.05); --inpb:rgba(16,185,129,.22); --inpf:rgba(16,185,129,.06); --ph:rgba(200,220,215,.28);
+          --btntext:#0e1512; --footer:#0e1512;
+          --fd:'Fraunces',serif; --fb:'Plus Jakarta Sans',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.32;}
+.cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s;mix-blend-mode:difference;}
+.cur-r{position:fixed;width:36px;height:36px;border:1px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transition:all .25s;opacity:.6;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1rem 4rem;background:rgba(14,21,18,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(16,185,129,.12);animation:slideDown .7s ease both;}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.logo{font-family:var(--fd);font-size:1.3rem;color:var(--accent);font-weight:700;letter-spacing:.06em;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;transition:color .3s;font-weight:500;}
+.nav-links a:hover{color:var(--accent);}
+.nav-actions{display:flex;gap:.7rem;align-items:center;}
+.btn-lang{padding:.42rem .9rem;border:1px solid var(--ab);background:transparent;color:var(--accent);font-family:var(--fb);font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;cursor:pointer;transition:all .3s;}
+.btn-lang:hover{background:var(--as);}
+.btn-dl{padding:.42rem 1rem;background:var(--accent);color:var(--btntext);font-family:var(--fb);font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:all .3s;}
+.btn-dl:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 5px 18px var(--ashadow);}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 70% 45%,rgba(16,185,129,.08) 0%,transparent 65%),radial-gradient(ellipse 45% 70% at 15% 80%,rgba(52,211,153,.04) 0%,transparent 55%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:70px 70px;}
+.hero-wm{position:absolute;right:3rem;top:50%;transform:translateY(-50%);font-family:var(--fd);font-size:20vw;font-weight:700;color:var(--wm);line-height:1;pointer-events:none;user-select:none;}
+.hero-inner{position:relative;z-index:1;max-width:800px;}
+.eyebrow{display:inline-flex;align-items:center;gap:1rem;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.8rem;animation:fadeUp .7s .2s ease both;}
+.eyebrow::before{content:'';width:2.5rem;height:1px;background:var(--accent);}
+h1.hero-name{font-family:var(--fd);font-size:clamp(3.2rem,8vw,6.5rem);font-weight:700;line-height:1;color:var(--accent);animation:fadeUp .7s .4s ease both;}
+h1.hero-name .last{color:var(--heading);display:block;}
+.hero-role{margin-top:1rem;font-size:1rem;color:var(--muted);letter-spacing:.06em;animation:fadeUp .7s .55s ease both;}
+.hero-desc{margin-top:1.4rem;max-width:540px;line-height:1.85;color:var(--body);font-size:.91rem;animation:fadeUp .7s .7s ease both;}
+.hero-cta{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;animation:fadeUp .7s .85s ease both;}
+.btn-p{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:var(--accent);color:var(--btntext);font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:all .3s;border:none;cursor:pointer;font-family:var(--fb);}
+.btn-p:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 10px 28px var(--ashadow);}
+.btn-o{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border:1px solid var(--accent);color:var(--accent);font-weight:500;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:all .3s;cursor:pointer;background:transparent;font-family:var(--fb);}
+.btn-o:hover{background:var(--as);transform:translateY(-2px);}
+.stats{display:flex;gap:3rem;margin-top:3.5rem;padding-top:1.8rem;border-top:1px solid var(--div);animation:fadeUp .7s 1s ease both;flex-wrap:wrap;}
+.stat-n{font-family:var(--fd);font-size:2.4rem;font-weight:700;color:var(--accent);display:block;line-height:1;}
+.stat-l{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:.25rem;display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+/* SECTIONS */
+section{padding:6.5rem 4rem;position:relative;}
+.sec-inner{max-width:1100px;margin:0 auto;}
+.alt{background:var(--bg2);}
+.eyebrow-s{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;display:flex;align-items:center;gap:1rem;}
+.eyebrow-s::before{content:'';width:2rem;height:1px;background:var(--accent);}
+.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,4vw,3rem);font-weight:700;color:var(--heading);margin-bottom:3rem;line-height:1.1;}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4.5rem;align-items:start;}
+.about-text p{color:var(--body);line-height:1.9;font-size:.92rem;margin-bottom:.9rem;}
+/* PHOTO */
+.photo-wrap{display:flex;align-items:center;gap:1.6rem;margin-bottom:1.8rem;}
+.photo{width:115px;height:115px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid var(--accent);box-shadow:0 0 0 6px var(--as),0 8px 28px var(--ashadow);flex-shrink:0;}
+.photo-info .pname{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--accent);line-height:1.1;}
+.photo-info .prole{color:var(--accent);font-size:.82rem;margin-top:.3rem;font-weight:600;}
+.photo-info .ploc{color:var(--muted);font-size:.78rem;margin-top:.2rem;}
+.contacts{margin-top:1.4rem;display:flex;flex-direction:column;gap:.8rem;}
+.cr{display:flex;align-items:center;gap:.85rem;color:var(--muted);font-size:.84rem;}
+.ci{width:36px;height:36px;border:1px solid var(--cb);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--as);}
+.cr a{color:var(--muted);text-decoration:none;transition:color .3s;}
+.cr a:hover{color:var(--accent);}
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--cb);border-radius:10px;padding:1.7rem;margin-bottom:1.4rem;}
+.card h3{font-family:var(--fd);color:var(--heading);font-size:1.05rem;margin-bottom:1.3rem;font-weight:700;}
+/* LANG */
+.li{margin-bottom:1rem;}
+.lt{display:flex;justify-content:space-between;margin-bottom:.35rem;}
+.ln{color:var(--text);font-size:.83rem;font-weight:500;}
+.lp{color:var(--accent);font-size:.83rem;font-weight:700;}
+.lbar{height:4px;background:var(--track);border-radius:2px;overflow:hidden;}
+.lfill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;width:0;transition:width 1.4s cubic-bezier(.25,.46,.45,.94);}
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:.55rem;}
+.pill{padding:.32rem .85rem;border:1px solid var(--cb);border-radius:100px;font-size:.74rem;color:var(--muted);transition:all .3s;}
+.pill:hover{border-color:var(--accent);color:var(--accent);background:var(--as);}
+/* TIMELINE */
+.timeline{position:relative;padding-left:2.5rem;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent 92%);}
+.ti{position:relative;margin-bottom:2.5rem;opacity:0;transform:translateX(-16px);transition:all .5s ease;}
+.ti.visible{opacity:1;transform:translateX(0);}
+.tdot{position:absolute;left:-2rem;top:.6rem;width:14px;height:14px;border-radius:50%;border:2px solid var(--accent);background:var(--bg);box-shadow:0 0 12px var(--ag);}
+.tc{background:var(--card);border:1px solid var(--cb);border-radius:10px;padding:1.8rem 1.8rem 1.4rem;transition:border-color .3s,transform .3s;}
+.tc:hover{border-color:var(--accent);transform:translateX(5px);background:var(--ch);}
+/* COMPANY — FULL WIDTH, VERY VISIBLE */
+.t-company-name{
+  font-family:var(--fd);
+  font-size:1.6rem;
+  color:var(--accent);
+  font-weight:700;
+  line-height:1.15;
+  border-left:4px solid var(--accent);
+  padding-left:.75rem;
+  margin-bottom:.45rem;
+  display:block;
+  letter-spacing:.01em;
+  text-shadow:0 0 20px var(--ag);
+}
+.t-period-badge{
+  display:inline-block;
+  font-size:.75rem;
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:.08em;
+  background:var(--as);
+  border:1px solid var(--ab);
+  padding:.28rem .8rem;
+  border-radius:4px;
+  margin-left:.75rem;
+  vertical-align:middle;
+}
+.t-role{color:var(--accent);font-size:.9rem;margin:.6rem 0 .9rem .75rem;font-weight:600;letter-spacing:.02em;}
+.tl{list-style:none;}
+.tl li{color:var(--muted);font-size:.85rem;line-height:1.75;padding:.22rem 0 .22rem 1.2rem;position:relative;}
+.tl li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:.66rem;top:.3rem;}
+.t-more{background:none;border:none;color:var(--accent);font-size:.76rem;cursor:pointer;margin-top:.7rem;letter-spacing:.05em;display:flex;align-items:center;gap:.35rem;font-family:var(--fb);font-weight:500;transition:opacity .2s;}
+.t-more:hover{opacity:.7;}
+.t-extra{display:none;}
+.t-extra.open{display:block;}
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.sk-cat{background:var(--card);border:1px solid var(--cb);border-radius:10px;padding:1.5rem;}
+.sk-cat h3{font-family:var(--fd);color:var(--heading);font-size:1rem;font-weight:700;margin-bottom:1.1rem;display:flex;align-items:center;gap:.55rem;}
+.sk-ico{width:26px;height:26px;background:var(--as);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;}
+.sk-row{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--div);font-size:.82rem;}
+.sk-row:last-child{border-bottom:none;}
+.sk-n{color:var(--body);}
+.sk-lv{font-size:.67rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-weight:700;}
+/* AI */
+.ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.7rem;}
+.ai-card{background:var(--card);border:1px solid var(--cb);border-radius:12px;padding:1.7rem;transition:border-color .3s,transform .3s;position:relative;overflow:hidden;}
+.ai-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.ai-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 14px 36px var(--ashadow);}
+.ai-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--as);border:1px solid var(--ab);border-radius:20px;padding:.28rem .75rem;font-size:.68rem;font-weight:700;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;}
+.ai-name{font-family:var(--fd);font-size:1.3rem;color:var(--heading);font-weight:700;margin-bottom:.4rem;}
+.ai-spec{color:var(--accent);font-size:.78rem;font-weight:600;letter-spacing:.04em;margin-bottom:.7rem;}
+.ai-desc{color:var(--body);font-size:.84rem;line-height:1.7;}
+/* EDU */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;}
+.edu-card{background:var(--card);border:1px solid var(--cb);border-radius:10px;padding:1.9rem;transition:border-color .3s;}
+.edu-card:hover{border-color:var(--accent);}
+.edu-icon{font-size:1.9rem;margin-bottom:.9rem;}
+.edu-title{font-family:var(--fd);color:var(--heading);font-size:1.1rem;font-weight:700;margin-bottom:.3rem;}
+.edu-inst{color:var(--accent);font-size:.82rem;font-weight:600;margin-bottom:.7rem;}
+.edu-desc{color:var(--body);font-size:.83rem;line-height:1.7;}
+.edu-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.9rem;}
+.edu-tag{padding:.22rem .7rem;background:var(--as);border:1px solid var(--ab);border-radius:3px;font-size:.7rem;color:var(--accent);letter-spacing:.06em;}
+/* CONTACT */
+.con-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:4.5rem;align-items:start;}
+.con-title{font-family:var(--fd);font-size:1.55rem;color:var(--heading);font-weight:700;margin-bottom:.9rem;}
+.con-p{color:var(--body);line-height:1.85;font-size:.89rem;margin-bottom:1.8rem;}
+.cd-item{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem;}
+.cd-icon{width:40px;height:40px;border:1px solid var(--cb);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;background:var(--as);flex-shrink:0;}
+.cd-text{color:var(--muted);font-size:.84rem;}
+.cd-text strong{display:block;color:var(--text);font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.12rem;}
+.cd-text a{color:var(--muted);text-decoration:none;transition:color .3s;}
+.cd-text a:hover{color:var(--accent);}
+.soc-links{display:flex;gap:.7rem;margin-top:1.6rem;}
+.soc{width:40px;height:40px;border:1px solid var(--cb);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:var(--muted);text-decoration:none;transition:all .3s;background:var(--as);font-family:var(--fb);}
+.soc:hover{border-color:var(--accent);color:var(--accent);}
+/* FORM */
+.cform{background:var(--card);border:1px solid var(--cb);border-radius:12px;padding:2.3rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.fg{margin-bottom:1.3rem;}
+.fg label{display:block;font-size:.71rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;font-weight:600;}
+.fg input,.fg textarea,.fg select{width:100%;background:var(--inp);border:1px solid var(--inpb);border-radius:6px;padding:.82rem 1rem;color:var(--text);font-family:var(--fb);font-size:.86rem;outline:none;transition:border-color .3s;resize:none;-webkit-appearance:none;appearance:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--ph);}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--accent);background:var(--inpf);}
+.fg select option{background:var(--bg2);color:var(--text);}
+.fg textarea{min-height:125px;}
+.ferror{border-color:rgba(224,92,92,.7)!important;animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
+.fsub{width:100%;padding:.95rem;background:var(--accent);color:var(--btntext);font-family:var(--fb);font-size:.83rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.55rem;}
+.fsub:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 10px 28px var(--ashadow);}
+.fsub:disabled{opacity:.6;pointer-events:none;}
+.fsuc{display:none;text-align:center;padding:1.8rem;color:var(--accent);font-size:.88rem;}
+.fsuc .fck{font-size:2.8rem;display:block;margin-bottom:.7rem;}
+/* FOOTER */
+footer{background:var(--footer);border-top:1px solid var(--div);padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;font-size:.76rem;color:var(--muted);flex-wrap:wrap;gap:.8rem;}
+/* REVEAL */
+.rev{opacity:0;transform:translateY(26px);transition:all .6s ease;}
+.rev.visible{opacity:1;transform:translateY(0);}
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:.9rem 1.4rem;}
+  .nav-links{display:none;}
+  section{padding:4.5rem 1.4rem;}
+  .hero{padding:7.5rem 1.4rem 3.5rem;}
+  .about-grid,.con-wrap,.edu-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .ai-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  footer{padding:1.4rem;}
+  .hero-wm{display:none;}
+}
+@media(max-width:560px){
+  .skills-grid{grid-template-columns:1fr;}
+  .stats{gap:1.8rem;}
+  .nav-actions{gap:.4rem;}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+<!-- NAV -->
+<nav>
+  <div class="logo">DR<span style="color:var(--heading)">I</span></div>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi" data-i18n="n_about">Sobre Mí</a></li>
+    <li><a href="#experiencia" data-i18n="n_exp">Experiencia</a></li>
+    <li><a href="#habilidades" data-i18n="n_skills">Habilidades</a></li>
+    <li><a href="#ia" data-i18n="n_ia">Inteligencia Artificial</a></li>
+    <li><a href="#formacion" data-i18n="n_edu">Formación</a></li>
+    <li><a href="#contacto" data-i18n="n_con">Contacto</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-lang" onclick="toggleLang()" id="langBtn">🌐 EN</button>
+    <button class="btn-dl" onclick="downloadCV()">⬇ <span data-i18n="n_dl">Descargar CV</span></button>
+  </div>
+</nav>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-wm">DRI</div>
+  <div class="hero-inner">
+    <div class="eyebrow" data-i18n="h_eyebrow">Director de Collections · Ciudad de México</div>
+    <h1 class="hero-name">David Ramírez<span class="last">Iñiguez</span></h1>
+    <p class="hero-role" data-i18n="h_role">Fintech Leader · Collections Strategy · Portfolio Management</p>
+    <p class="hero-desc" data-i18n="h_desc">Líder con más de 15 años de experiencia en cobranza, recuperación de cartera y gestión de equipos de alto rendimiento en el sector financiero mexicano. Actualmente Director de Collections en Konfío.</p>
+    <div class="hero-cta">
+      <a href="#experiencia" class="btn-p" data-i18n="h_cta1">Ver Experiencia</a>
+      <a href="#contacto" class="btn-o" data-i18n="h_cta2">Contáctame</a>
+    </div>
+    <div class="stats">
+      <div><span class="stat-n">15+</span><span class="stat-l" data-i18n="s_years">Años de Experiencia</span></div>
+      <div><span class="stat-n">8</span><span class="stat-l" data-i18n="s_cos">Empresas Líderes</span></div>
+      <div><span class="stat-n">Nac.</span><span class="stat-l" data-i18n="s_scope">Alcance Nacional</span></div>
+      <div><span class="stat-n">4</span><span class="stat-l" data-i18n="s_lang">Idiomas</span></div>
+    </div>
+  </div>
+</section>
+<!-- SOBRE MÍ -->
+<section id="sobre-mi" class="alt">
+<div class="sec-inner">
+  <div class="about-grid">
+    <div class="rev">
+      <div class="eyebrow-s" data-i18n="ab_ey">Sobre Mí</div>
+      <h2 class="sec-title" data-i18n="ab_title">Perfil Profesional</h2>
+      <div class="photo-wrap">
+        <img class="photo" src="data:image/jpeg;base64,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" alt="David Ramírez Iñiguez"/>
+        <div class="photo-info">
+          <div class="pname">David Ramírez Iñiguez</div>
+          <div class="prole" data-i18n="ab_role">Director de Collections · Konfío</div>
+          <div class="ploc">📍 Ciudad de México</div>
+        </div>
+      </div>
+      <p data-i18n="ab_p1">Me considero un líder con buen manejo de personal, emprendedor y administrador eficiente que aprende rápido sobre el negocio. Empático para trabajar en equipo y adaptable a los cambios del día a día.</p>
+      <p data-i18n="ab_p2">Con tolerancia a la frustración y disposición a trabajar bajo presión cuando la operación así lo requiere, he construido una carrera sólida en el sector financiero mexicano liderando equipos de cobranza a nivel nacional.</p>
+      <p data-i18n="ab_p3">Cuento con Licenciatura en Economía por la Facultad de Estudios Superiores Acatlán (UNAM), base que me permite analizar portafolios con una visión analítica y estratégica orientada a resultados.</p>
+      <div class="contacts">
+        <div class="cr"><div class="ci">📱</div><div><a href="tel:+5215518033592">+52 1 5518033592</a></div></div>
+        <div class="cr"><div class="ci">✉️</div><div><a href="mailto:dainiguez@hotmail.com">dainiguez@hotmail.com</a></div></div>
+        <div class="cr"><div class="ci">📍</div><div>Col. Independencia, Benito Juárez, CDMX</div></div>
+        <div class="cr"><div class="ci">💼</div><div><a href="https://linkedin.com/in/david-ram%C3%ADrez-i%C3%B1iguez-52818550" target="_blank">LinkedIn</a></div></div>
+      </div>
+    </div>
+    <div class="rev" style="transition-delay:.15s">
+      <div class="card">
+        <h3 data-i18n="lang_t">🌐 Idiomas</h3>
+        <div class="li"><div class="lt"><span class="ln" data-i18n="l_es">Español</span><span class="lp">100%</span></div><div class="lbar"><div class="lfill" data-w="100"></div></div></div>
+        <div class="li"><div class="lt"><span class="ln" data-i18n="l_en">Inglés</span><span class="lp">50%</span></div><div class="lbar"><div class="lfill" data-w="50"></div></div></div>
+        <div class="li"><div class="lt"><span class="ln" data-i18n="l_pt">Portugués</span><span class="lp">30%</span></div><div class="lbar"><div class="lfill" data-w="30"></div></div></div>
+        <div class="li"><div class="lt"><span class="ln" data-i18n="l_it">Italiano</span><span class="lp">30%</span></div><div class="lbar"><div class="lfill" data-w="30"></div></div></div>
+      </div>
+      <div class="card">
+        <h3 data-i18n="soft_t">⚡ Competencias Clave</h3>
+        <div class="pills">
+          <span class="pill" data-i18n="c1">Liderazgo</span><span class="pill" data-i18n="c2">Enfoque a Resultados</span>
+          <span class="pill" data-i18n="c3">Negociación</span><span class="pill" data-i18n="c4">Planeación Estratégica</span>
+          <span class="pill" data-i18n="c5">Comunicación Asertiva</span><span class="pill" data-i18n="c6">Formación de Equipos</span>
+          <span class="pill" data-i18n="c7">Integridad</span><span class="pill" data-i18n="c8">Trabajo bajo Presión</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+<div class="sec-inner">
+  <div class="eyebrow-s rev" data-i18n="ex_ey">Trayectoria Profesional</div>
+  <h2 class="sec-title rev" data-i18n="ex_title">Experiencia</h2>
+  <div class="timeline">
+
+```
+<div class="ti"><div class="tdot"></div><div class="tc">
+  <span class="t-company-name">Konfío</span>
+  <span class="t-period-badge" data-i18n="k1_p">Jul 2024 – Presente</span>
+  <div class="t-role" data-i18n="k1_r">Director de Collections</div>
+  <ul class="tl">
+    <li data-i18n="k1_1">Administración eficiente de portafolios de cobranza de Pymes y tarjetas.</li>
+    <li data-i18n="k1_2">Diseño e implementación de estrategia omnicanal de recuperación de cartera.</li>
+    <li data-i18n="k1_3">Optimización y automatización de procesos mediante nuevas tecnologías e inteligencia artificial.</li>
+  </ul>
+  <button class="t-more" onclick="toggleMore(this)" data-i18n="more">▸ Ver más responsabilidades</button>
+  <div class="t-extra"><ul class="tl" style="margin-top:.5rem;">
+    <li data-i18n="k1_4">Actualización de flujos de notificaciones automatizadas según días de atraso.</li>
+    <li data-i18n="k1_5">Análisis y reporte del estado de portafolios a la alta dirección.</li>
+    <li data-i18n="k1_6">Gestión de medios de cobro: domiciliación, comunicaciones, BPO's, AEC e inteligencia artificial.</li>
+    <li data-i18n="k1_7">Identificación de segmentos de clientes para acciones preventivas o correctivas de cobro.</li>
+    <li data-i18n="k1_8">Establecimiento de metas y KPI's del área, equipo de trabajo y BPO's.</li>
+    <li data-i18n="k1_9">Coordinación interdisciplinaria con Riesgo, Crédito, Legal, Prevención de Fraudes y Cumplimiento.</li>
+    <li data-i18n="k1_10">Garantía del cumplimiento de covenants e identificación oportuna de alertas de riesgo.</li>
+  </ul></div>
+</div></div>
+
+<div class="ti"><div class="tdot"></div><div class="tc">
+  <span class="t-company-name">Konfío</span>
+  <span class="t-period-badge" data-i18n="k2_p">Ago 2023 – Jun 2024</span>
+  <div class="t-role" data-i18n="k2_r">Collections Product Manager</div>
+  <ul class="tl">
+    <li data-i18n="k2_1">Dirección y supervisión del equipo de cobranza, asegurando el cumplimiento de objetivos y metas.</li>
+    <li data-i18n="k2_2">Implementación de la estrategia de cobranza en BPO's y agencias externas de cobranza.</li>
+    <li data-i18n="k2_3">Desarrollo e implementación de estrategias efectivas para la recuperación del saldo vencido.</li>
+    <li data-i18n="k2_4">Monitoreo y análisis de los indicadores de desempeño del área y de los colaboradores.</li>
+  </ul>
+</div></div>
+
+<div class="ti"><div class="tdot"></div><div class="tc">
+  <span class="t-company-name">FinComún Servicios Financieros</span>
+  <span class="t-period-badge" data-i18n="fc1_p">Nov 2019 – Jul 2023</span>
+  <div class="t-role" data-i18n="fc1_r">Gerente de Cobranza</div>
+  <ul class="tl">
+    <li data-i18n="fc1_1">Responsable de la cobranza institucional: gobierno, empresas privadas e intermediarios financieros.</li>
+    <li data-i18n="fc1_2">Gestión y control del índice de reservas mediante la actividad de cobranza.</li>
+    <li data-i18n="fc1_3">Implementación de herramientas digitales y gestión del call center de cobranza temprana.</li>
+  </ul>
+  <button class="t-more" onclick="toggleMore(this)" data-i18n="more">▸ Ver más responsabilidades</button>
+  <div class="t-extra"><ul class="tl" style="margin-top:.5rem;">
+    <li data-i18n="fc1_4">Creación de análisis, implementación y autorización de plazos de espera.</li>
+    <li data-i18n="fc1_5">Aplicación de estrategias de cobranza según los segmentos de morosidad de las cuentas.</li>
+    <li data-i18n="fc1_6">Depuración de cartera para la generación de portafolios para venta.</li>
+    <li data-i18n="fc1_7">Gestión de despachos extrajudiciales de cobranza en las plazas con presencia.</li>
+  </ul></div>
+</div></div>
+
+<div class="ti"><div class="tdot"></div><div class="tc">
+  <span class="t-company-name">FinComún Servicios Financieros</span>
+  <span class="t-period-badge" data-i18n="fc2_p">Jun 2018 – Nov 2019</span>
+  <div class="t-role" data-i18n="fc2_r">Gerente Territorial de Ventas y Cobranza</div>
+  <ul class="tl">
+    <li data-i18n="fc2_1">Responsable de la colocación de créditos y recuperación de cuentas vencidas en 14 sucursales.</li>
+    <li data-i18n="fc2_2">Generación de planes de trabajo alineados a la estrategia comercial de la empresa.</li>
+    <li data-i18n="fc2_3">Reducción del traspaso de cuentas vencidas a quebrantos.</li>
+    <li data-i18n="fc2_4">Auditorías constantes sobre los procesos para evitar malas prácticas operativas.</li>
+  </ul>
+</div></div>
+
+<div class="ti"><div class="tdot"></div><div class="tc">
+  <span class="t-company-name">Bagon Contact Center Solution</span>
+  <span class="t-period-badge" data-i18n="bg_p">Ago 2017 – Jun 2018</span>
+  <div class="t-role" data-i18n="bg_r">Gerente de Cobranza Call Center Nacional</div>
+  <ul class="tl">
+    <li data-i18n="bg_1">Implementación del modelo de call center para campañas de marcación a nivel nacional.</li>
+    <li data-i18n="bg_2">Gestión del pago de la cartera vencida por múltiples medios de contacto con los clientes.</li>
+    <li data-i18n="bg_3">Construcción del presupuesto para una medición confiable de la cobranza mensual.</li>
+  </ul>
+</div></div>
+
+<div class="ti"><div class="tdot"></div><div class="tc">
+  <span class="t-company-name">Green Strategy (Consultoría)</span>
+  <span class="t-period-badge" data-i18n="gs_p">Mar 2013 – Sep 2016</span>
+  <div class="t-role" data-i18n="gs_r">Gerente de Operaciones</div>
+  <ul class="tl">
+    <li data-i18n="gs_1">Creación del área de gestores domiciliarios para la atención en el ámbito nacional.</li>
+    <li data-i18n="gs_2">Implementación de campañas de carteo, SMS, VoiceBlaster y e-mailing a nivel nacional.</li>
+    <li data-i18n="gs_3">Desarrollo de competencias del personal mediante el Modelo de Gestión Call Model.</li>
+  </ul>
+</div></div>
+
+<div class="ti"><div class="tdot"></div><div class="tc">
+  <span class="t-company-name">HSBC Banca</span>
+  <span class="t-period-badge" data-i18n="hs_p">Ago 2008 – Feb 2011</span>
+  <div class="t-role" data-i18n="hs_r">Ejecutivo → Analista → Supervisor de Cobranza</div>
+  <ul class="tl">
+    <li data-i18n="hs_1">Obtención de los primeros lugares en el ranking de ejecutivos telefónicos.</li>
+    <li data-i18n="hs_2">Administración de la cartera vencida a nivel nacional y elaboración de estrategias de cobranza.</li>
+    <li data-i18n="hs_3">Creación de algoritmo con instituciones bancarias para la unificación de la referencia de pago.</li>
+  </ul>
+</div></div>
+```
+
+  </div>
+</div>
+</section>
+<!-- HABILIDADES -->
+<section id="habilidades" class="alt">
+<div class="sec-inner">
+  <div class="eyebrow-s rev" data-i18n="sk_ey">Conocimiento Técnico</div>
+  <h2 class="sec-title rev" data-i18n="sk_title">Habilidades &amp; Software</h2>
+  <div class="skills-grid">
+    <div class="sk-cat rev">
+      <h3><span class="sk-ico">🖥️</span><span data-i18n="skc1">Plataformas de Cobro</span></h3>
+      <div class="sk-row"><span class="sk-n">INCONCERT</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+      <div class="sk-row"><span class="sk-n">NUXIBA</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+      <div class="sk-row"><span class="sk-n">LYRICALL</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+      <div class="sk-row"><span class="sk-n">SMS / Voice Blaster</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+    </div>
+    <div class="sk-cat rev" style="transition-delay:.08s">
+      <h3><span class="sk-ico">🏦</span><span data-i18n="skc2">Plataformas Bancarias</span></h3>
+      <div class="sk-row"><span class="sk-n">HOGAN</span><span class="sk-lv" data-i18n="inter">Intermedio</span></div>
+      <div class="sk-row"><span class="sk-n">KRONER</span><span class="sk-lv" data-i18n="inter">Intermedio</span></div>
+      <div class="sk-row"><span class="sk-n">COBRANZ</span><span class="sk-lv" data-i18n="inter">Intermedio</span></div>
+      <div class="sk-row"><span class="sk-n">SAP</span><span class="sk-lv" data-i18n="inter">Intermedio</span></div>
+    </div>
+    <div class="sk-cat rev" style="transition-delay:.16s">
+      <h3><span class="sk-ico">💻</span><span data-i18n="skc3">Software General</span></h3>
+      <div class="sk-row"><span class="sk-n">Microsoft Office</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+      <div class="sk-row"><span class="sk-n">Power BI</span><span class="sk-lv" data-i18n="inter">Intermedio</span></div>
+      <div class="sk-row"><span class="sk-n">Base de Datos</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+      <div class="sk-row"><span class="sk-n">Econometrics View</span><span class="sk-lv" data-i18n="inter">Intermedio</span></div>
+      <div class="sk-row"><span class="sk-n">Herramientas Gráficas</span><span class="sk-lv" data-i18n="inter">Intermedio</span></div>
+    </div>
+    <div class="sk-cat rev" style="transition-delay:.24s">
+      <h3><span class="sk-ico">📊</span><span data-i18n="skc4">Competencias</span></h3>
+      <div class="sk-row"><span class="sk-n" data-i18n="cp1">Evaluación de Proyectos</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+      <div class="sk-row"><span class="sk-n" data-i18n="cp2">Análisis de Mercado</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+      <div class="sk-row"><span class="sk-n">Econometría</span><span class="sk-lv" data-i18n="inter">Intermedio</span></div>
+      <div class="sk-row"><span class="sk-n" data-i18n="cp3">Gestión de KPIs</span><span class="sk-lv" data-i18n="adv">Avanzado</span></div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- IA -->
+<section id="ia">
+<div class="sec-inner">
+  <div class="eyebrow-s rev" data-i18n="ia_ey">Herramientas Digitales</div>
+  <h2 class="sec-title rev" data-i18n="ia_title">Plataformas de Inteligencia Artificial</h2>
+  <div class="ai-grid">
+    <div class="ai-card rev">
+      <div class="ai-badge">🤖 <span data-i18n="ai_b1">IA Generativa</span></div>
+      <div class="ai-name">ChatGPT</div>
+      <div class="ai-spec" data-i18n="ai_s1">Prompts Especializados</div>
+      <p class="ai-desc" data-i18n="ai_d1">Creación de prompts especializados para análisis de cobranza, generación de reportes ejecutivos y automatización de comunicaciones con clientes y equipos de trabajo.</p>
+    </div>
+    <div class="ai-card rev" style="transition-delay:.1s">
+      <div class="ai-badge">💎 <span data-i18n="ai_b2">IA Analítica</span></div>
+      <div class="ai-name">Gemini</div>
+      <div class="ai-spec" data-i18n="ai_s2">Creación de Gemas</div>
+      <p class="ai-desc" data-i18n="ai_d2">Creación de Gemas personalizadas para realizar análisis profundos de portafolios, tendencias de cartera y comportamiento de clientes con contexto especializado.</p>
+    </div>
+    <div class="ai-card rev" style="transition-delay:.2s">
+      <div class="ai-badge">⚡ <span data-i18n="ai_b3">IA Ejecutiva</span></div>
+      <div class="ai-name">Claude</div>
+      <div class="ai-spec" data-i18n="ai_s3">Análisis &amp; Presentaciones</div>
+      <p class="ai-desc" data-i18n="ai_d3">Análisis de históricos de cartera, elaboración de presentaciones ejecutivas para la alta dirección y construcción de tableros de seguimiento con perspectivas accionables.</p>
+    </div>
+    <div class="ai-card rev" style="transition-delay:.3s">
+      <div class="ai-badge">🔄 <span data-i18n="ai_b4">Automatización</span></div>
+      <div class="ai-name">N8N</div>
+      <div class="ai-spec" data-i18n="ai_s4">Automatización de Flujos</div>
+      <p class="ai-desc" data-i18n="ai_d4">Implementación de automatizaciones de flujos de trabajo para optimizar procesos operativos de cobranza, notificaciones y seguimiento de indicadores de gestión.</p>
+    </div>
+  </div>
+</div>
+</section>
+<!-- FORMACIÓN -->
+<section id="formacion" class="alt">
+<div class="sec-inner">
+  <div class="eyebrow-s rev" data-i18n="ed_ey">Académica &amp; Certificaciones</div>
+  <h2 class="sec-title rev" data-i18n="ed_title">Formación</h2>
+  <div class="edu-grid">
+    <div class="edu-card rev">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-title" data-i18n="ed1_t">Licenciatura en Economía</div>
+      <div class="edu-inst">FES Acatlán — UNAM</div>
+      <p class="edu-desc" data-i18n="ed1_d">Formación sólida en análisis económico, econometría, evaluación de proyectos de inversión y análisis de mercado.</p>
+      <div class="edu-tags">
+        <span class="edu-tag" data-i18n="ed1_t1">Econometría</span>
+        <span class="edu-tag" data-i18n="ed1_t2">Evaluación de Proyectos</span>
+        <span class="edu-tag" data-i18n="ed1_t3">Análisis de Mercado</span>
+      </div>
+    </div>
+    <div class="edu-card rev" style="transition-delay:.1s">
+      <div class="edu-icon">📜</div>
+      <div class="edu-title" data-i18n="ed2_t">Certificaciones &amp; Cursos</div>
+      <div class="edu-inst" data-i18n="ed2_i">Múltiples instituciones</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.42rem;margin-top:.5rem;">
+        <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;">▸</span><span class="edu-desc" data-i18n="ct1">Certificación en Modelo de Gestión "Call Model"</span></li>
+        <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;">▸</span><span class="edu-desc" data-i18n="ct2">Prevención de Lavado de Dinero y Financiamiento al Terrorismo</span></li>
+        <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;">▸</span><span class="edu-desc" data-i18n="ct3">Jefaturas con Liderazgo — USEM / UNIAPAC</span></li>
+        <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;">▸</span><span class="edu-desc" data-i18n="ct4">Talleres CONVECOB 2010, 2011 y 2012</span></li>
+        <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;">▸</span><span class="edu-desc" data-i18n="ct5">Venta Consultiva, Tipología de Clientes y Manejo de Objeciones</span></li>
+        <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;">▸</span><span class="edu-desc" data-i18n="ct6">SAP — Ejecutivo, Administrativo y Jefe de Cobranza</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+<!-- CONTACTO -->
+<section id="contacto">
+<div class="sec-inner">
+  <div class="eyebrow-s rev" data-i18n="co_ey">Hablemos</div>
+  <h2 class="sec-title rev" data-i18n="co_title">Contacto</h2>
+  <div class="con-wrap">
+    <div class="rev">
+      <div class="con-title" data-i18n="co_h">¿Tienes una oportunidad?</div>
+      <p class="con-p" data-i18n="co_p">Estoy siempre abierto a escuchar nuevas propuestas, proyectos desafiantes o simplemente a intercambiar ideas sobre el sector financiero y la gestión de cobranza.</p>
+      <div class="cd-item"><div class="cd-icon">📱</div><div class="cd-text"><strong data-i18n="co_ph">Teléfono</strong><a href="tel:+5215518033592">+52 1 5518033592</a></div></div>
+      <div class="cd-item"><div class="cd-icon">✉️</div><div class="cd-text"><strong data-i18n="co_em">Correo</strong><a href="mailto:dainiguez@hotmail.com">dainiguez@hotmail.com</a></div></div>
+      <div class="cd-item"><div class="cd-icon">📍</div><div class="cd-text"><strong data-i18n="co_lo">Ubicación</strong>Ciudad de México, México</div></div>
+      <div class="soc-links">
+        <a href="https://linkedin.com/in/david-ram%C3%ADrez-i%C3%B1iguez-52818550" target="_blank" class="soc">in</a>
+        <a href="https://facebook.com/dainiguez" target="_blank" class="soc">f</a>
+      </div>
+    </div>
+    <div class="cform rev" style="transition-delay:.15s">
+      <div class="form-row">
+        <div class="fg"><label data-i18n="f_nm">Nombre</label><input type="text" id="f_name" placeholder="Tu nombre"></div>
+        <div class="fg"><label data-i18n="f_co">Empresa</label><input type="text" id="f_company" placeholder="Tu empresa"></div>
+      </div>
+      <div class="fg"><label data-i18n="f_em">Correo Electrónico</label><input type="email" id="f_email" placeholder="tu@correo.com"></div>
+      <div class="fg">
+        <label data-i18n="f_su">Asunto</label>
+        <select id="f_subject">
+          <option value="" data-i18n="f_s0">Selecciona un motivo</option>
+          <option value="oferta" data-i18n="f_s1">Oferta Laboral</option>
+          <option value="proyecto" data-i18n="f_s2">Proyecto / Consultoría</option>
+          <option value="networking" data-i18n="f_s3">Networking</option>
+          <option value="otro" data-i18n="f_s4">Otro</option>
+        </select>
+      </div>
+      <div class="fg"><label data-i18n="f_ms">Mensaje</label><textarea id="f_msg" rows="5" placeholder="Cuéntame sobre tu propuesta..."></textarea></div>
+      <button class="fsub" id="fBtn" onclick="sendForm()"><span data-i18n="f_send">Enviar Mensaje</span> <span id="fIcon">→</span></button>
+      <div class="fsuc" id="fSuc"><span class="fck">✅</span><p data-i18n="f_ok">¡Mensaje enviado! David te responderá pronto.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+<footer>
+  <div>© 2025 David Ramírez Iñiguez · <span data-i18n="ft_r">Todos los derechos reservados</span></div>
+  <div><span data-i18n="ft_m">Hecho por DRI en Ciudad de México</span></div>
+</footer>
+<script>
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+document.addEventListener('mousemove',e=>{cur.style.cssText=`left:${e.clientX-5}px;top:${e.clientY-5}px`;curR.style.cssText=`left:${e.clientX-18}px;top:${e.clientY-18}px`;});
+document.querySelectorAll('a,button,.tc,.sk-cat,.edu-card,.pill,.ai-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';curR.style.transform='scale(1.4)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';curR.style.transform='scale(1)';});
+});
+// REVEAL
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.rev,.ti').forEach(el=>obs.observe(el));
+// LANG BARS
+const lObs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.querySelectorAll('.lfill').forEach(b=>{b.style.width=b.dataset.w+'%';})})  ,{threshold:.3});
+document.querySelectorAll('.card').forEach(c=>lObs.observe(c));
+// TOGGLE MORE
+function toggleMore(btn){const ex=btn.nextElementSibling,op=ex.classList.toggle('open');btn.textContent=op?T[lang].less:T[lang].more;}
+// FORM
+function sendForm(){
+  const n=document.getElementById('f_name'),e=document.getElementById('f_email'),m=document.getElementById('f_msg');
+  let ok=true;[n,e,m].forEach(el=>{el.classList.remove('ferror');if(!el.value.trim()){el.classList.add('ferror');ok=false;}});
+  if(!ok)return;if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value)){e.classList.add('ferror');return;}
+  const b=document.getElementById('fBtn');b.disabled=true;document.getElementById('fIcon').textContent='⏳';
+  setTimeout(()=>{b.style.display='none';document.getElementById('fSuc').style.display='block';},1400);
+}
+// DOWNLOAD
+const PHOTO='data:image/jpeg;base64,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';
+function downloadCV(){
+  const isES=lang==='es';
+  const html=`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>David Ramírez Iñiguez — CV</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Georgia,serif;background:#fff;color:#1a2535;font-size:12px;line-height:1.5;}
+.page{max-width:800px;margin:0 auto;padding:36px;}
+.hdr{display:flex;align-items:center;gap:20px;padding-bottom:18px;border-bottom:3px solid #c8a84b;margin-bottom:18px;}
+.hdr img{width:85px;height:85px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid #c8a84b;}
+.hdr-info h1{font-size:22px;font-weight:700;color:#0f2044;}
+.hdr-info .role{color:#c8a84b;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-top:4px;}
+.hdr-info .ct{margin-top:7px;display:flex;flex-wrap:wrap;gap:6px 16px;}
+.hdr-info .ct span{color:#555;font-size:10.5px;}
+.grid{display:grid;grid-template-columns:200px 1fr;gap:22px;}
+.sec-t{font-size:11px;font-weight:700;color:#0f2044;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid #c8a84b;padding-bottom:3px;margin-bottom:7px;margin-top:14px;}
+.sec-t:first-child{margin-top:0;}
+.li{margin-bottom:5px;}
+.lr{display:flex;justify-content:space-between;font-size:10px;margin-bottom:1px;}
+.lp{color:#c8a84b;font-weight:700;}
+.lbar{height:3px;background:#eee;border-radius:2px;}
+.lf{height:100%;background:linear-gradient(90deg,#c8a84b,#e2c97e);border-radius:2px;}
+.pills{display:flex;flex-wrap:wrap;gap:3px;}
+.pill{padding:2px 7px;border:1px solid #c8a84b;border-radius:100px;font-size:9px;color:#555;}
+.sk{display:flex;justify-content:space-between;padding:2.5px 0;border-bottom:1px solid #f0f0f0;font-size:10.5px;}
+.sk:last-child{border-bottom:none;}
+.slv{color:#c8a84b;font-size:9px;font-weight:700;text-transform:uppercase;}
+.exp{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #f0f0f0;}
+.exp:last-child{border-bottom:none;}
+.exp-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px;}
+.exp-co{font-size:12.5px;font-weight:700;color:#0f2044;border-left:3px solid #c8a84b;padding-left:6px;}
+.exp-per{font-size:9px;color:#c8a84b;font-weight:700;background:#fdf5e4;padding:2px 6px;border-radius:3px;white-space:nowrap;}
+.exp-r{color:#c8a84b;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:2px 0 4px 9px;}
+.exp-ul{list-style:none;}
+.exp-ul li{font-size:10.5px;color:#555;padding:1px 0 1px 11px;position:relative;}
+.exp-ul li::before{content:'▸';position:absolute;left:0;color:#c8a84b;font-size:8px;top:2px;}
+.ai-item{padding:4px 0;border-bottom:1px solid #f0f0f0;}
+.ai-item:last-child{border-bottom:none;}
+.ai-h{display:flex;justify-content:space-between;}
+.ai-nm{font-weight:700;font-size:11px;color:#0f2044;}
+.ai-sp{font-size:9px;color:#c8a84b;font-weight:700;}
+.ai-ds{font-size:10px;color:#666;margin-top:1px;}
+.ft{margin-top:18px;padding-top:10px;border-top:1px solid #e0e0e0;display:flex;justify-content:space-between;font-size:9px;color:#aaa;}
+</style></head><body><div class="page">
+<div class="hdr">
+  <img src="${PHOTO}" alt="David Ramírez Iñiguez"/>
+  <div class="hdr-info">
+    <h1>David Ramírez Iñiguez</h1>
+    <div class="role">${isES?'Director de Collections · Konfío':'Collections Director · Konfío'}</div>
+    <div class="ct">
+      <span>📱 +52 1 5518033592</span>
+      <span>✉️ dainiguez@hotmail.com</span>
+      <span>📍 ${isES?'Ciudad de México':'Mexico City'}</span>
+      <span>💼 linkedin.com/in/david-ramírez-iñiguez-52818550</span>
+    </div>
+  </div>
+</div>
+<div class="grid">
+<div>
+  <div class="sec-t">${isES?'Perfil':'Profile'}</div>
+  <p style="font-size:10.5px;color:#555;line-height:1.6;">${isES?'Líder con más de 15 años en cobranza, recuperación de cartera y gestión de equipos de alto rendimiento en el sector financiero mexicano.':'Leader with 15+ years in collections, portfolio recovery and high-performance team management in the Mexican financial sector.'}</p>
+  <div class="sec-t">${isES?'Idiomas':'Languages'}</div>
+  ${[['Español / Spanish','100'],['Inglés / English','50'],['Portugués / Portuguese','30'],['Italiano / Italian','30']].map(([n,p])=>`<div class="li"><div class="lr"><span>${n}</span><span class="lp">${p}%</span></div><div class="lbar"><div class="lf" style="width:${p}%"></div></div></div>`).join('')}
+  <div class="sec-t">${isES?'Competencias':'Competencies'}</div>
+  <div class="pills">${(isES?['Liderazgo','Resultados','Negociación','Planeación','Comunicación','Equipos','Integridad','Presión']:['Leadership','Results','Negotiation','Planning','Communication','Teamwork','Integrity','Pressure']).map(s=>`<span class="pill">${s}</span>`).join('')}</div>
+  <div class="sec-t">Software</div>
+  ${[['Microsoft Office',isES?'Avanzado':'Advanced'],['Power BI',isES?'Intermedio':'Intermediate'],['Base de Datos / DB',isES?'Avanzado':'Advanced'],['INCONCERT',isES?'Avanzado':'Advanced'],['NUXIBA',isES?'Avanzado':'Advanced'],['LYRICALL',isES?'Avanzado':'Advanced'],['SAP',isES?'Intermedio':'Intermediate']].map(([n,l])=>`<div class="sk"><span>${n}</span><span class="slv">${l}</span></div>`).join('')}
+  <div class="sec-t">${isES?'Formación':'Education'}</div>
+  <div style="font-size:11px;font-weight:700;color:#0f2044;">${isES?'Lic. Economía':"BSc Economics"}</div>
+  <div style="font-size:10px;color:#c8a84b;margin-bottom:5px;">FES Acatlán — UNAM</div>
+  ${(isES?['Cert. "Call Model"','Prev. Lavado de Dinero','Jefaturas con Liderazgo','CONVECOB 2010-2012','Venta Consultiva']:['Call Model Cert.','AML Prevention','Leadership Managers','CONVECOB 2010-2012','Consultative Sales']).map(c=>`<div style="font-size:10px;color:#555;padding:1px 0 1px 10px;position:relative;"><span style="position:absolute;left:0;color:#c8a84b;">▸</span>${c}</div>`).join('')}
+</div>
+<div>
+  <div class="sec-t">${isES?'Experiencia Profesional':'Professional Experience'}</div>
+  ${[
+    {co:'Konfío',r:isES?'Director de Collections':'Collections Director',p:isES?'Jul 2024 – Presente':'Jul 2024 – Present',b:isES?['Administración de portafolios de cobranza Pymes y tarjetas.','Estrategia omnicanal de recuperación de cartera.','Automatización de procesos mediante IA.','Metas y KPIs del área, equipo y BPOs.','Coordinación con Riesgo, Crédito, Legal y Cumplimiento.']:['SME and card collection portfolio management.','Omnichannel portfolio recovery strategy.','Process automation through AI.','Setting goals and KPIs for area, team, and BPOs.','Coordination with Risk, Credit, Legal and Compliance.']},
+    {co:'Konfío',r:'Collections Product Manager',p:'Ago/Aug 2023 – Jun 2024',b:isES?['Dirección y supervisión del equipo de cobranza.','Implementación de estrategia en BPOs y agencias externas.','Estrategias para recuperación de saldo vencido.']:['Direction and supervision of the collections team.','Strategy implementation in BPOs and external agencies.','Strategies for past-due balance recovery.']},
+    {co:'FinComún Servicios Financieros',r:isES?'Gerente de Cobranza':'Collections Manager',p:'Nov 2019 – Jul 2023',b:isES?['Cobranza institucional: gobierno, empresas y fintech.','Control del índice de reservas.','Herramientas digitales y call center de cobranza temprana.']:['Institutional collections: government, companies.','Reserve index management.','Digital tools and early-stage collections call center.']},
+    {co:'FinComún Servicios Financieros',r:isES?'Gerente Territorial de Ventas y Cobranza':'Territorial Sales & Collections Manager',p:'Jun 2018 – Nov 2019',b:isES?['Colocación de créditos y recuperación en 14 sucursales.','Planes de trabajo alineados a estrategia comercial.']:['Credit placement and recovery across 14 branches.','Work plans aligned to commercial strategy.']},
+    {co:'Bagon Contact Center Solution',r:isES?'Gerente Cobranza Call Center Nacional':'National Collections Manager',p:'Ago/Aug 2017 – Jun 2018',b:isES?['Modelo de call center para campañas nacionales.','Gestión de cartera vencida por múltiples canales.']:['Call center model for national campaigns.','Past-due portfolio management across channels.']},
+    {co:'Green Strategy',r:isES?'Gerente de Operaciones':'Operations Manager',p:'Mar 2013 – Sep 2016',b:isES?['Área de gestores domiciliarios a nivel nacional.','Campañas SMS, VoiceBlaster y e-mailing nacional.']:['Nationwide field agent area.','SMS, VoiceBlaster and e-mailing national campaigns.']},
+    {co:'HSBC Banca',r:isES?'Ejecutivo → Analista → Supervisor':'Executive → Analyst → Supervisor',p:'Ago/Aug 2008 – Feb 2011',b:isES?['Primeros lugares en ranking de ejecutivos.','Administración de cartera vencida nacional.']:['Top rankings in collections executives.','National past-due portfolio management.']},
+  ].map(e=>`<div class="exp"><div class="exp-h"><span class="exp-co">${e.co}</span><span class="exp-per">${e.p}</span></div><div class="exp-r">${e.r}</div><ul class="exp-ul">${e.b.map(b=>`<li>${b}</li>`).join('')}</ul></div>`).join('')}
+  <div class="sec-t">${isES?'Inteligencia Artificial':'AI Platforms'}</div>
+  ${[
+    {nm:'ChatGPT',sp:isES?'Prompts Especializados':'Specialized Prompts',ds:isES?'Prompts para análisis de cobranza y reportes ejecutivos.':'Prompt engineering for collections analysis and reports.'},
+    {nm:'Gemini',sp:isES?'Creación de Gemas':'Custom Gems',ds:isES?'Análisis profundo de portafolios y tendencias de cartera.':'Deep portfolio analysis and delinquency trends.'},
+    {nm:'Claude',sp:isES?'Análisis & Presentaciones':'Analysis & Presentations',ds:isES?'Históricos de cartera, presentaciones ejecutivas y tableros.':'Historical analysis, executive presentations and dashboards.'},
+    {nm:'N8N',sp:isES?'Automatización de Flujos':'Workflow Automation',ds:isES?'Automatizaciones de procesos operativos de cobranza.':'Workflow automations for collections processes.'},
+  ].map(a=>`<div class="ai-item"><div class="ai-h"><span class="ai-nm">${a.nm}</span><span class="ai-sp">${a.sp}</span></div><div class="ai-ds">${a.ds}</div></div>`).join('')}
+</div>
+</div>
+<div class="ft">
+  <span>© 2025 David Ramírez Iñiguez · dainiguez@hotmail.com · +52 1 5518033592</span>
+  <span>${isES?'Hecho por DRI en Ciudad de México':'Made by DRI in Mexico City'}</span>
+</div>
+</div></body></html>`;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;
+  a.download=`David_Ramirez_CV_${lang.toUpperCase()}.html`;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+// I18N
+let lang='es';
+const T={
+es:{n_about:'Sobre Mí',n_exp:'Experiencia',n_skills:'Habilidades',n_ia:'Inteligencia Artificial',n_edu:'Formación',n_con:'Contacto',n_dl:'Descargar CV',h_eyebrow:'Director de Collections · Ciudad de México',h_role:'Fintech Leader · Collections Strategy · Portfolio Management',h_desc:'Líder con más de 15 años de experiencia en cobranza, recuperación de cartera y gestión de equipos de alto rendimiento en el sector financiero mexicano. Actualmente Director de Collections en Konfío.',h_cta1:'Ver Experiencia',h_cta2:'Contáctame',s_years:'Años de Experiencia',s_cos:'Empresas Líderes',s_scope:'Alcance Nacional',s_lang:'Idiomas',ab_ey:'Sobre Mí',ab_title:'Perfil Profesional',ab_role:'Director de Collections · Konfío',ab_p1:'Me considero un líder con buen manejo de personal, emprendedor y administrador eficiente que aprende rápido sobre el negocio. Empático para trabajar en equipo y adaptable a los cambios del día a día.',ab_p2:'Con tolerancia a la frustración y disposición a trabajar bajo presión cuando la operación así lo requiere, he construido una carrera sólida en el sector financiero mexicano liderando equipos de cobranza a nivel nacional.',ab_p3:'Cuento con Licenciatura en Economía por la FES Acatlán (UNAM), base que me permite analizar portafolios con una visión analítica y estratégica orientada a resultados.',lang_t:'🌐 Idiomas',l_es:'Español',l_en:'Inglés',l_pt:'Portugués',l_it:'Italiano',soft_t:'⚡ Competencias Clave',c1:'Liderazgo',c2:'Enfoque a Resultados',c3:'Negociación',c4:'Planeación Estratégica',c5:'Comunicación Asertiva',c6:'Formación de Equipos',c7:'Integridad',c8:'Trabajo bajo Presión',ex_ey:'Trayectoria Profesional',ex_title:'Experiencia',k1_p:'Jul 2024 – Presente',k1_r:'Director de Collections',k1_1:'Administración eficiente de portafolios de cobranza de Pymes y tarjetas.',k1_2:'Diseño e implementación de estrategia omnicanal de recuperación de cartera.',k1_3:'Optimización y automatización de procesos mediante nuevas tecnologías e inteligencia artificial.',k1_4:'Actualización de flujos de notificaciones automatizadas según días de atraso.',k1_5:'Análisis y reporte del estado de portafolios a la alta dirección.',k1_6:"Gestión de medios de cobro: domiciliación, comunicaciones, BPOs, AEC e inteligencia artificial.",k1_7:'Identificación de segmentos de clientes para acciones preventivas o correctivas de cobro.',k1_8:"Establecimiento de metas y KPIs del área, equipo de trabajo y BPOs.",k1_9:'Coordinación interdisciplinaria con Riesgo, Crédito, Legal, Prevención de Fraudes y Cumplimiento.',k1_10:'Garantía del cumplimiento de covenants e identificación oportuna de alertas de riesgo.',k2_p:'Ago 2023 – Jun 2024',k2_r:'Collections Product Manager',k2_1:'Dirección y supervisión del equipo de cobranza, asegurando el cumplimiento de objetivos y metas.',k2_2:"Implementación de la estrategia de cobranza en BPOs y agencias externas de cobranza.",k2_3:'Desarrollo e implementación de estrategias efectivas para la recuperación del saldo vencido.',k2_4:'Monitoreo y análisis de los indicadores de desempeño del área y de los colaboradores.',fc1_p:'Nov 2019 – Jul 2023',fc1_r:'Gerente de Cobranza',fc1_1:'Responsable de la cobranza institucional: gobierno, empresas privadas e intermediarios financieros.',fc1_2:'Gestión y control del índice de reservas mediante la actividad de cobranza.',fc1_3:'Implementación de herramientas digitales y gestión del call center de cobranza temprana.',fc1_4:'Creación de análisis, implementación y autorización de plazos de espera.',fc1_5:'Aplicación de estrategias de cobranza según los segmentos de morosidad de las cuentas.',fc1_6:'Depuración de cartera para la generación de portafolios para venta.',fc1_7:'Gestión de despachos extrajudiciales de cobranza en las plazas con presencia.',fc2_p:'Jun 2018 – Nov 2019',fc2_r:'Gerente Territorial de Ventas y Cobranza',fc2_1:'Responsable de la colocación de créditos y recuperación de cuentas vencidas en 14 sucursales.',fc2_2:'Generación de planes de trabajo alineados a la estrategia comercial de la empresa.',fc2_3:'Reducción del traspaso de cuentas vencidas a quebrantos.',fc2_4:'Auditorías constantes sobre los procesos para evitar malas prácticas operativas.',bg_p:'Ago 2017 – Jun 2018',bg_r:'Gerente de Cobranza Call Center Nacional',bg_1:'Implementación del modelo de call center para campañas de marcación a nivel nacional.',bg_2:'Gestión del pago de la cartera vencida por múltiples medios de contacto con los clientes.',bg_3:'Construcción del presupuesto para una medición confiable de la cobranza mensual.',gs_p:'Mar 2013 – Sep 2016',gs_r:'Gerente de Operaciones',gs_1:'Creación del área de gestores domiciliarios para la atención en el ámbito nacional.',gs_2:'Implementación de campañas de carteo, SMS, VoiceBlaster y e-mailing a nivel nacional.',gs_3:'Desarrollo de competencias del personal mediante el Modelo de Gestión Call Model.',hs_p:'Ago 2008 – Feb 2011',hs_r:'Ejecutivo → Analista → Supervisor de Cobranza',hs_1:'Obtención de los primeros lugares en el ranking de ejecutivos telefónicos.',hs_2:'Administración de la cartera vencida a nivel nacional y elaboración de estrategias de cobranza.',hs_3:'Creación de algoritmo con instituciones bancarias para la unificación de la referencia de pago.',more:'▸ Ver más responsabilidades',less:'▾ Ver menos',sk_ey:'Conocimiento Técnico',sk_title:'Habilidades & Software',skc1:'Plataformas de Cobro',skc2:'Plataformas Bancarias',skc3:'Software General',skc4:'Competencias',cp1:'Evaluación de Proyectos',cp2:'Análisis de Mercado',cp3:'Gestión de KPIs',adv:'Avanzado',inter:'Intermedio',ia_ey:'Herramientas Digitales',ia_title:'Plataformas de Inteligencia Artificial',ai_b1:'IA Generativa',ai_b2:'IA Analítica',ai_b3:'IA Ejecutiva',ai_b4:'Automatización',ai_s1:'Prompts Especializados',ai_s2:'Creación de Gemas',ai_s3:'Análisis & Presentaciones',ai_s4:'Automatización de Flujos',ai_d1:'Creación de prompts especializados para análisis de cobranza, generación de reportes ejecutivos y automatización de comunicaciones con clientes y equipos de trabajo.',ai_d2:'Creación de Gemas personalizadas para realizar análisis profundos de portafolios, tendencias de cartera y comportamiento de clientes con contexto especializado.',ai_d3:'Análisis de históricos de cartera, elaboración de presentaciones ejecutivas para la alta dirección y construcción de tableros de seguimiento con perspectivas accionables.',ai_d4:'Implementación de automatizaciones de flujos de trabajo para optimizar procesos operativos de cobranza, notificaciones y seguimiento de indicadores de gestión.',ed_ey:'Académica & Certificaciones',ed_title:'Formación',ed1_t:'Licenciatura en Economía',ed1_d:'Formación sólida en análisis económico, econometría, evaluación de proyectos de inversión y análisis de mercado.',ed1_t1:'Econometría',ed1_t2:'Evaluación de Proyectos',ed1_t3:'Análisis de Mercado',ed2_t:'Certificaciones & Cursos',ed2_i:'Múltiples instituciones',ct1:'Certificación en Modelo de Gestión "Call Model"',ct2:'Prevención de Lavado de Dinero y Financiamiento al Terrorismo',ct3:'Jefaturas con Liderazgo — USEM / UNIAPAC',ct4:'Talleres CONVECOB 2010, 2011 y 2012',ct5:'Venta Consultiva, Tipología de Clientes y Manejo de Objeciones',ct6:'SAP — Ejecutivo, Administrativo y Jefe de Cobranza',co_ey:'Hablemos',co_title:'Contacto',co_h:'¿Tienes una oportunidad?',co_p:'Estoy siempre abierto a escuchar nuevas propuestas, proyectos desafiantes o simplemente a intercambiar ideas sobre el sector financiero y la gestión de cobranza.',co_ph:'Teléfono',co_em:'Correo',co_lo:'Ubicación',f_nm:'Nombre',f_co:'Empresa',f_em:'Correo Electrónico',f_su:'Asunto',f_ms:'Mensaje',f_send:'Enviar Mensaje',f_s0:'Selecciona un motivo',f_s1:'Oferta Laboral',f_s2:'Proyecto / Consultoría',f_s3:'Networking',f_s4:'Otro',f_ok:'¡Mensaje enviado! David te responderá pronto.',ft_r:'Todos los derechos reservados',ft_m:'Hecho por DRI en Ciudad de México'},
+en:{n_about:'About',n_exp:'Experience',n_skills:'Skills',n_ia:'AI Tools',n_edu:'Education',n_con:'Contact',n_dl:'Download CV',h_eyebrow:'Collections Director · Mexico City',h_role:'Fintech Leader · Collections Strategy · Portfolio Management',h_desc:'Leader with 15+ years of experience in collections, portfolio recovery and high-performance team management in the Mexican financial sector. Currently Collections Director at Konfío.',h_cta1:'View Experience',h_cta2:'Contact Me',s_years:'Years of Experience',s_cos:'Leading Companies',s_scope:'National Scope',s_lang:'Languages',ab_ey:'About Me',ab_title:'Professional Profile',ab_role:'Collections Director · Konfío',ab_p1:"I consider myself a leader with strong people management skills, an entrepreneurial mindset, and an efficient administrator who learns quickly. Empathetic team player, adaptable to day-to-day changes.",ab_p2:"With tolerance for frustration and willingness to work under pressure when required, I have built a solid career in the Mexican financial sector leading collections teams nationwide.",ab_p3:"I hold a Bachelor's degree in Economics from FES Acatlán (UNAM), enabling me to analyze portfolios with an analytical and results-oriented strategic vision.",lang_t:'🌐 Languages',l_es:'Spanish',l_en:'English',l_pt:'Portuguese',l_it:'Italian',soft_t:'⚡ Key Competencies',c1:'Leadership',c2:'Results-Oriented',c3:'Negotiation',c4:'Strategic Planning',c5:'Assertive Communication',c6:'Team Development',c7:'Integrity',c8:'Works Under Pressure',ex_ey:'Professional Journey',ex_title:'Experience',k1_p:'Jul 2024 – Present',k1_r:'Collections Director',k1_1:'Efficient management of SME and card collection portfolios.',k1_2:'Design and implementation of omnichannel portfolio recovery strategy.',k1_3:'Optimization and automation of processes through new technologies and artificial intelligence.',k1_4:'Update of automated notification flows based on days past due.',k1_5:'Analysis and reporting of portfolio status to senior management.',k1_6:"Management of collection channels: direct debit, communications, BPOs, external agencies, and AI.",k1_7:'Customer segmentation for preventive or corrective collection actions.',k1_8:"Setting goals and KPIs for the collections area, work team, and BPOs.",k1_9:'Interdisciplinary coordination with Risk, Credit, Legal, Fraud Prevention, and Compliance.',k1_10:'Ensuring covenant compliance and generating timely risk and deviation alerts.',k2_p:'Aug 2023 – Jun 2024',k2_r:'Collections Product Manager',k2_1:'Direction and supervision of the collections team, ensuring compliance with objectives and targets.',k2_2:"Implementation of collections strategy in BPOs and external collection agencies.",k2_3:'Development and implementation of effective strategies for past-due balance recovery.',k2_4:'Monitoring and analysis of area performance indicators and collaborator KPIs.',fc1_p:'Nov 2019 – Jul 2023',fc1_r:'Collections Manager',fc1_1:'Responsible for institutional collections: government, private companies, and financial intermediaries.',fc1_2:'Management and control of the reserve index through collection activities.',fc1_3:'Digital tools implementation and early-stage collections call center management.',fc1_4:'Creation of analyses, implementation, and authorization of payment extension periods.',fc1_5:'Collection strategies applied by account delinquency segments.',fc1_6:'Portfolio cleansing for the generation of sale portfolios.',fc1_7:'Management of extrajudicial collection agencies in active locations.',fc2_p:'Jun 2018 – Nov 2019',fc2_r:'Territorial Sales & Collections Manager',fc2_1:'Responsible for credit placement and past-due account recovery across 14 branches.',fc2_2:'Generation of work plans aligned to the company commercial strategy.',fc2_3:'Reduction of past-due account transfers to write-offs.',fc2_4:'Constant process audits to prevent bad operational practices.',bg_p:'Aug 2017 – Jun 2018',bg_r:'National Call Center Collections Manager',bg_1:'Implementation of the call center model for national dialing campaigns.',bg_2:'Past-due portfolio payment management across multiple customer contact channels.',bg_3:'Budget construction for reliable monthly collections measurement.',gs_p:'Mar 2013 – Sep 2016',gs_r:'Operations Manager',gs_1:'Creation of the field agent area for nationwide client coverage.',gs_2:'Implementation of direct mail, SMS, VoiceBlaster, and e-mailing campaigns nationwide.',gs_3:'Staff competency development through the Call Model Management framework.',hs_p:'Aug 2008 – Feb 2011',hs_r:'Executive → Analyst → Collections Supervisor',hs_1:'Top rankings in the telephone collections executive ranking.',hs_2:'National past-due portfolio management and collections strategy development.',hs_3:'Algorithm creation with banking institutions for unified payment references.',more:'▸ Show more responsibilities',less:'▾ Show less',sk_ey:'Technical Knowledge',sk_title:'Skills & Software',skc1:'Collections Platforms',skc2:'Banking Platforms',skc3:'General Software',skc4:'Competencies',cp1:'Project Evaluation',cp2:'Market Analysis',cp3:'KPI Management',adv:'Advanced',inter:'Intermediate',ia_ey:'Digital Tools',ia_title:'Artificial Intelligence Platforms',ai_b1:'Generative AI',ai_b2:'Analytical AI',ai_b3:'Executive AI',ai_b4:'Automation',ai_s1:'Specialized Prompts',ai_s2:'Custom Gems',ai_s3:'Analysis & Presentations',ai_s4:'Workflow Automation',ai_d1:'Creation of specialized prompts for collections analysis, executive report generation, and communication automation with clients and work teams.',ai_d2:'Custom Gems for deep portfolio analysis, delinquency trends, and client behavior insights with specialized financial context.',ai_d3:'Historical portfolio analysis, executive presentation creation for senior management, and tracking dashboards with actionable insights.',ai_d4:'Workflow automations to optimize operational collections processes, notifications, and management indicator tracking.',ed_ey:'Academic & Certifications',ed_title:'Education',ed1_t:"Bachelor's Degree in Economics",ed1_d:'Solid training in economic analysis, econometrics, investment project evaluation, and market analysis.',ed1_t1:'Econometrics',ed1_t2:'Project Evaluation',ed1_t3:'Market Analysis',ed2_t:'Certifications & Courses',ed2_i:'Multiple institutions',ct1:'Call Model Management Certification',ct2:'Anti-Money Laundering and Terrorism Financing Prevention',ct3:'Leadership for Managers — USEM / UNIAPAC',ct4:'CONVECOB National Collections Convention 2010, 2011 & 2012',ct5:'Consultative Selling, Client Typology, and Objection Handling',ct6:'SAP — Executive, Administrative, and Collections Manager',co_ey:"Let's Talk",co_title:'Contact',co_h:'Do you have an opportunity?',co_p:"I'm always open to hearing new proposals, challenging projects, or simply exchanging ideas about the financial sector and collections management.",co_ph:'Phone',co_em:'Email',co_lo:'Location',f_nm:'Name',f_co:'Company',f_em:'Email Address',f_su:'Subject',f_ms:'Message',f_send:'Send Message',f_s0:'Select a reason',f_s1:'Job Offer',f_s2:'Project / Consulting',f_s3:'Networking',f_s4:'Other',f_ok:'Message sent! David will get back to you soon.',ft_r:'All rights reserved',ft_m:'Made by DRI in Mexico City'}
+};
+function applyT(l){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[l][k]!==undefined)el.textContent=T[l][k];});
+  const ph={f_name:l==='en'?'Your name':'Tu nombre',f_company:l==='en'?'Your company':'Tu empresa',f_email:l==='en'?'you@email.com':'tu@correo.com',f_msg:l==='en'?'Tell me about your proposal...':'Cuéntame sobre tu propuesta...'};
+  Object.entries(ph).forEach(([id,p])=>{const el=document.getElementById(id);if(el)el.placeholder=p;});
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lfill').forEach(b=>{b.style.width='0';setTimeout(()=>{b.style.width=b.dataset.w+'%';},100);});
+}
+function toggleLang(){lang=lang==='es'?'en':'es';document.getElementById('langBtn').textContent=lang==='es'?'🌐 EN':'🌐 ES';applyT(lang);}
+</script>
+</body>
+</html>
